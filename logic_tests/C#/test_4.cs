@@ -1,21 +1,38 @@
-using System.Collections;
-using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
+//dummy function to test
+public class EnemySpawner(){
+    int spawnCount;
+    public EnemySpawner(){
+        spawnCount = 0;
+    }
+    public void SpawnEnemies(int num){
+        spawnCount += num;
+    }
+    
+}
+
+
+public class WaitForSeconds(int i){
+    private int seconds;
+    
+    public WaitForSeconds(int i)
+    {
+        seconds = i;
+    }
+    
+}
 
 public class EnemySpawnerTests
 {
-    [UnityTest]
-    public IEnumerator SpawnEnemies_SpawnsExactlyNumEnemies()
+    [Test]
+    public void SpawnEnemies_SpawnsExactlyNumEnemies()
     {
-        var spawnerGO = new GameObject();
-        var spawner = spawnerGO.AddComponent<EnemySpawner>();
-
+        // Mock spawner (replace with your actual spawner class)
+        var spawner = new EnemySpawner();
         int numEnemies = 5;
         float timeToSpawn = 1f;
-        string enemyType = "Goblin";
+        GameObject enemyType = new GameObject(); // Mock enemy prefab
 
-        yield return spawner.StartCoroutine(spawner.SpawnEnemies(numEnemies, timeToSpawn, enemyType));
+        spawner.SpawnEnemies(numEnemies, timeToSpawn, enemyType);
 
         Assert.AreEqual(numEnemies, spawner.spawnCount, "Enemy spawned more or fewer times than expected.");
     }
