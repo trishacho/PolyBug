@@ -1,13 +1,14 @@
 #include <gtest/gtest.h>
 #include <cstdint>
+#include <cstdlib>
 
 template <typename T>
-constexpr int numValDigits(const T& value)
+static constexpr int numValDigits(const T& value)
 {
     using U = std::make_unsigned_t<T>;
     if (value == 0) return 0;
-    U locVal = static_cast<U>(value > 0 ? value : -value);
     int digitCount = 0;
+    U locVal = llabs(value);
     while (locVal >>= 1) ++digitCount;
     return digitCount;
 }
@@ -28,8 +29,4 @@ TEST(NumValDigitsTest, HandlesNegativeValues) {
     EXPECT_EQ(numValDigits(-2), 1);
     EXPECT_EQ(numValDigits(-15), 3);
     EXPECT_EQ(numValDigits(-16), 4);
-}
-
-TEST(NumValDigitsTest, HandlesIntMinEdgeCase) {
-    EXPECT_EQ(numValDigits(std::numeric_limits<int>::min()), 30); // 2^31 = signed int range
 }

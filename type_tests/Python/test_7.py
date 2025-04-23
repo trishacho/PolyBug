@@ -10,11 +10,11 @@ class TestNegativeStrideFix(unittest.TestCase):
 
         # Apply the patch: ensure a copy is made for negative strides
         # Using np.copy to ensure we create a new copy of the reversed array
-        reversed_tensor = torch.as_tensor(x[::-1].copy())  # .copy() ensures a new tensor is created
+        reversed_tensor = torch.tensor(x[::-1].copy())
         
         # Verify that the tensor values are correctly reversed
-        expected_values = x[::-1]
-        self.assertTrue(torch.equal(reversed_tensor, torch.tensor(expected_values)))
+        for i in range(len(reversed_tensor)):
+            self.assertTrue(reversed_tensor[i] == x[len(reversed_tensor)-1-i])
 
     def test_no_negative_stride(self):
         # Create a numpy array with values 0 through 9

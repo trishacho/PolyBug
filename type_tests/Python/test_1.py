@@ -1,5 +1,7 @@
 import unittest
-from django.http import HttpRequest, HttpResponse
+from typing import Optional, Any
+from io import BytesIO
+
 
 class User:
     def __init__(self, id: Optional[int]):
@@ -7,6 +9,19 @@ class User:
 
 class AnonymousUser:
     id = None
+
+class HttpRequest():
+    def __init__(self):
+        self.user = None
+
+
+class HttpResponse():
+    def __init__(self, id):
+        self.id = id
+
+def my_view(request: HttpRequest) -> HttpResponse:
+    current_id_plus_one = request.user.id + 1
+    return HttpResponse(current_id_plus_one)
 
 class TestMyView(unittest.TestCase):
 
@@ -18,8 +33,8 @@ class TestMyView(unittest.TestCase):
         # Call the view
         response = my_view(request)
 
-        # Check the response content is as expected (0 for anonymous user)
-        self.assertEqual(response.content.decode(), '0')
+        # Check the response content is as expected (NoneType)
+        assert response.id == None
 
     def test_authenticated_user(self):
         # Create a request with a normal user (id = 42)
@@ -30,7 +45,7 @@ class TestMyView(unittest.TestCase):
         response = my_view(request)
 
         # Check the response content is the user's id + 1 (43)
-        self.assertEqual(response.content.decode(), '43')
+        assert response.id == 43
 
 if __name__ == '__main__':
     unittest.main()

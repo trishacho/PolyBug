@@ -4,21 +4,19 @@ describe('getParentIndex', () => {
       const index = 0;
       const commentsArr = []; // empty or shorter array
       const commentData = { childrenLevel: 1 };
-  
+
       const getParentIndex = () => {
         let startingPoint = index - 1;
         try {
-          while (
-            startingPoint >= 0 &&
-            commentsArr[startingPoint].childrenLevel > commentData.childrenLevel
-          ) {
+          while (startingPoint >= 0 && commentsArr[startingPoint].childrenLevel > commentData.childrenLevel) {
             startingPoint--;
           }
         } catch {
           startingPoint = undefined;
         }
-        return startingPoint;
+        return startingPoint >= 0 ? startingPoint : undefined;
       };
+  
   
       expect(() => getParentIndex()).not.toThrow();
       expect(getParentIndex()).toBeUndefined();

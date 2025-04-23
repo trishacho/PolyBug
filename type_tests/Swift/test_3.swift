@@ -1,7 +1,5 @@
 import XCTest
 
-// Assuming you have the `Tool`, `ToolOutput`, and `RepeatToolInput` types already defined
-
 // Dummy ToolOutput type to simulate the behavior
 enum ToolOutput {
     case text(String)

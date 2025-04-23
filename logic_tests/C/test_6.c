@@ -1,6 +1,7 @@
-#include "unity.h"
+#include <assert.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAX_ADV 5
 
@@ -23,15 +24,15 @@ void adv_rpa_invalidate(struct bt_le_ext_adv *adv, void *data) {
     adv_called = true;
 }
 
-void le_rpa_invalidate_test() {
-    bool rpa_expired_data[MAX_ADV] = {0};
-    bt_le_ext_adv_foreach(adv_rpa_invalidate, &rpa_expired_data);
-}
-
 void bt_le_ext_adv_foreach(void (*func)(struct bt_le_ext_adv *adv, void *data), void *data) {
     for (size_t i = 0; i < bt_dev.id_count; i++) {
         func(&adv_pool[i], data);
     }
+}
+
+void le_rpa_invalidate_test() {
+    bool rpa_expired_data[MAX_ADV] = {0};
+    bt_le_ext_adv_foreach(adv_rpa_invalidate, &rpa_expired_data);
 }
 
 void setUp(void) {
@@ -40,10 +41,20 @@ void setUp(void) {
 }
 
 void test_rpa_data_is_initialized(void) {
+    setUp();
     le_rpa_invalidate_test();
 
-    TEST_ASSERT_TRUE(adv_called);
+    assert(adv_called && "adv_called should be true");
+
     for (size_t i = 0; i < bt_dev.id_count; i++) {
-        TEST_ASSERT_FALSE(rpa_data_snapshot[i]);
+        assert(rpa_data_snapshot[i] == false && "rpa_data_snapshot should be false");
     }
+
+    printf("test_rpa_data_is_initialized passed\n");
+}
+
+int main(void) {
+    test_rpa_data_is_initialized();
+    printf("All tests passed!\n");
+    return 0;
 }
