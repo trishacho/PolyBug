@@ -1,0 +1,27 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    nano \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/paulsengroup/StripePy.git /app
+
+# installing StripePy and its dependencies
+RUN pip install --upgrade pip && \
+    pip install '.[all]'
+
+# using the same requirements text file as langflow bc it's very similar
+COPY requirements-dev.txt .
+RUN pip install -r requirements-dev.txt
+
+# run test_stripe.py file
+CMD ["pytest", "test/unit/test_data_structures/test_stripe.py"]
