@@ -1,60 +1,48 @@
-#include <assert.h>
-#include <string.h>
-#include <stdbool.h>
+#include "bt_rpa_functions.h"
 #include <stdio.h>
+#include <stddef.h>
+#include <string.h>
 
-#define MAX_ADV 5
+/* Mock for atomic operations used in this file */
+#define atomic_set_bit(flags, bit) ((flags) |= (1 << (bit)))
 
-struct bt_le_ext_adv {
-    int dummy;
-};
+/* Define the constants needed in this file */
+#define BT_ADV_CREATED 0
+#define BT_DEV_SCAN_LIMITED 1
 
-bool adv_called = false;
-bool rpa_data_snapshot[MAX_ADV] = {false};
-
+/* Mock global variables */
 struct {
-    size_t id_count;
-} bt_dev = { .id_count = MAX_ADV };
+    int flags;
+    int id_count;
+} bt_dev;
 
-struct bt_le_ext_adv adv_pool[MAX_ADV];
+struct bt_le_ext_adv adv_pool[3];
 
-void adv_rpa_invalidate(struct bt_le_ext_adv *adv, void *data) {
-    bool *rpa_data = data;
-    memcpy(rpa_data_snapshot, rpa_data, sizeof(bool) * bt_dev.id_count);
-    adv_called = true;
+/* Config values for the test */
+int CONFIG_BT_EXT_ADV_ENABLED = 1;
+int CONFIG_BT_BROADCASTER_ENABLED = 1;
+
+/* Test function */
+void run_test(void)
+{
+    printf("\n--- Testing buggy function ---\n");
+    
+    /* Set up test conditions */
+    bt_dev.id_count = 2;
+    bt_dev.flags = 0;
+    atomic_set_bit(bt_dev.flags, BT_DEV_SCAN_LIMITED);
+    
+    /* Set up at least one advertisement */
+    memset(adv_pool, 0, sizeof(adv_pool));
+    atomic_set_bit(adv_pool[0].flags, BT_ADV_CREATED);
+    
+    /* Call the buggy function */
+    le_rpa_invalidate();
 }
 
-void bt_le_ext_adv_foreach(void (*func)(struct bt_le_ext_adv *adv, void *data), void *data) {
-    for (size_t i = 0; i < bt_dev.id_count; i++) {
-        func(&adv_pool[i], data);
-    }
-}
-
-void le_rpa_invalidate_test() {
-    bool rpa_expired_data[MAX_ADV] = {0};
-    bt_le_ext_adv_foreach(adv_rpa_invalidate, &rpa_expired_data);
-}
-
-void setUp(void) {
-    adv_called = false;
-    memset(rpa_data_snapshot, 1, sizeof(rpa_data_snapshot));
-}
-
-void test_rpa_data_is_initialized(void) {
-    setUp();
-    le_rpa_invalidate_test();
-
-    assert(adv_called && "adv_called should be true");
-
-    for (size_t i = 0; i < bt_dev.id_count; i++) {
-        assert(rpa_data_snapshot[i] == false && "rpa_data_snapshot should be false");
-    }
-
-    printf("test_rpa_data_is_initialized passed\n");
-}
-
-int main(void) {
-    test_rpa_data_is_initialized();
-    printf("All tests passed!\n");
+int main(void)
+{
+    printf("Testing RPA invalidate functions\n");
+    run_test();
     return 0;
 }

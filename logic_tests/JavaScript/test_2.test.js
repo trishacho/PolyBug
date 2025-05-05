@@ -1,5 +1,6 @@
 // Import the actual FetchWrapper to mock it
 const { FetchWrapper } = require('./helpers/fetch_wrapper');
+const { registerUser } = require('./helpers/registerUser'); // Import from the separate file
 
 // Mock the FetchWrapper
 jest.mock('./helpers/fetch_wrapper', () => {
@@ -11,25 +12,6 @@ jest.mock('./helpers/fetch_wrapper', () => {
     }))
   };
 });
-
-const registerUser = async (email, password, role) => {
-  let userName = email.split('@')[0].toLowerCase();
-  const object = {
-    email,
-    password,
-    role,
-    username: userName,
-  };
-
-  const response = await new FetchWrapper(
-    'https://example.com/users/register',
-    {
-      method: 'POST',
-      body: JSON.stringify(object),
-    }
-  );
-  return response;
-};
 
 describe('registerUser', () => {
   beforeEach(() => {

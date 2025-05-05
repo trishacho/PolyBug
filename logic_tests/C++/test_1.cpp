@@ -1,17 +1,7 @@
 #include <gtest/gtest.h>
 #include <cstdint>
 #include <cstdlib>
-
-template <typename T>
-static constexpr int numValDigits(const T& value)
-{
-    using U = std::make_unsigned_t<T>;
-    if (value == 0) return 0;
-    int digitCount = 0;
-    U locVal = llabs(value);
-    while (locVal >>= 1) ++digitCount;
-    return digitCount;
-}
+#include "numValDigits.h"
 
 TEST(NumValDigitsTest, HandlesZero) {
     EXPECT_EQ(numValDigits(0), 0);
