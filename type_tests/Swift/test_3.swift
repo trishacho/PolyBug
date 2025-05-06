@@ -1,11 +1,9 @@
 import XCTest
 
-// Dummy ToolOutput type to simulate the behavior
 enum ToolOutput {
     case text(String)
 }
 
-// Dummy Tool to simulate the Tool behavior
 struct Tool {
     let name: String
     let action: (RepeatToolInput) -> [ToolOutput]
@@ -16,20 +14,18 @@ struct Tool {
     }
 }
 
-// The RepeatToolInput struct
 struct RepeatToolInput {
     let text: String
     let y: Double
 }
 
-// The tools array with the bug where it does not return the correct type
 @MainActor
-let tools: [Tool] = [
+let tools: [any CallableTool] = [
     Tool(name: "repeat") { (input: RepeatToolInput) in
-        // This line was the bug: it should return [ToolOutput], but was returning incorrect values
-        return [.text(input.text)]  // Fixed to return ToolOutput type
-    }
+        [.text(.init(text: input.text))]
+    },
 ]
+
 
 // Unit test class
 class ToolTests: XCTestCase {

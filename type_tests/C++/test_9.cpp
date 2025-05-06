@@ -3,8 +3,9 @@
 #include <QByteArray>
 #include <QStringList>
 #include <QRegularExpression>
-#include <QRegExp>  // For testing the buggy version
+#include <QRegExp>
 #include <QIODevice>
+#include "reg.h"
 
 class NetworkStatParserTest : public QObject
 {
@@ -19,11 +20,7 @@ private slots:
         tempFile.write("eth0: 1000 2000 3000\n");
         tempFile.seek(0);
 
-        // Corrected code - using QRegularExpression
-        QByteArray l = tempFile.readLine();
-        QRegularExpression re("\\s+");  // FIXED: Using modern regex
-        QStringList list = QString(l).split(re);  // Correct usage
-        
+        QStringList list = changeRegex(tempFile);
         // Verify it works correctly
         QCOMPARE(list.size(), 4);
         QCOMPARE(list[0], QString("eth0:"));
@@ -38,10 +35,7 @@ private slots:
         tempFile.write("eth0: 123456 7890 123 456 789 012 345 678 901 23456\n");
         tempFile.seek(0);
 
-        // Correct implementation
-        QByteArray l = tempFile.readLine();
-        QRegularExpression re("\\s+");
-        QStringList list = QString(l).split(re);
+        QStringList list = changeRegex(tempFile);
         
         // Typical /proc/net/dev has 17 entries (interface + 16 numbers)
         QCOMPARE(list.size(), 17);
