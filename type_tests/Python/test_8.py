@@ -1,10 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-
-# Assume this is the function with the bug
-def process_retention_param(args, parser_object):
-    if hasattr(args, "retention") and args.retention is not None and len(args.retention) >= 3:
-        parser_object.error('The "--retention or -r" parameter must have max two integers. Three or more arguments specified: {}'.format(args.retention))
+from process_retention_param import process_retention_param
 
 class TestRetentionParam(unittest.TestCase):
 
