@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileReaderTest {
-    @Test(expected = IOException.class)
+    @Test
     public void testReadFileClosesStream() throws IOException {
         FileWriter writer = new FileWriter("testfile.txt");
         writer.write("Hello");

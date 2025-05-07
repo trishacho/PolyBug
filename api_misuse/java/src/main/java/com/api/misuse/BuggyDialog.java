@@ -1,4 +1,4 @@
-package project.PolyBug.api_misuse.java.src.main.java.com.api.misuse;
+package com.api.misuse;
 
 public class BuggyDialog {
     public Window getWindow() {

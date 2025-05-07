@@ -1,8 +1,8 @@
-package project.PolyBug.api_misuse.java.src.test.java.com.api.misuse;
+package com.api.misuse;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import project.PolyBug.api_misuse.java.src.main.java.com.api.misuse.BuggyDialog;
-import project.PolyBug.api_misuse.java.src.main.java.com.api.misuse.FixedDialog;
+import com.api.misuse.BuggyDialog;
+import com.api.misuse.FixedDialog;
 
 public class SetAnimationStyleTest {
 

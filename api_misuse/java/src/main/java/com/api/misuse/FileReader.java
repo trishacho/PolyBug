@@ -1,4 +1,6 @@
 package com.api.misuse;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class FileReader {
     public void readFile(String filePath) throws IOException {
