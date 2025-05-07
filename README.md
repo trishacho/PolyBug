@@ -15,7 +15,7 @@ If the repository a bug comes from has developer-written tests, we have also inc
 To run our manually written unit tests, you may follow the steps below for each type of bug.
 
 ### Off-By-One, API Misuse, and Memory Leak Errors
-#### C
+#### C/C++
 Note: You must have `gcc` installed.
 ```console 
 gcc <name_of_file>.c -o <name_of_file>
