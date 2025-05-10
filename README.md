@@ -30,9 +30,32 @@ gcc vterm_state_set_palette_color.c -o vterm_state_set_palette_color
 ./vterm_state_set_palette_color
 ```
 
+#### C#
+Note: You must have dotnet installed
+cd into the C# Test directory and run the tests using dotnet
+
+Example:
+```console
+cd logic_tests/C#
+dotnet test
+```
+
+#### Swift
+Note: You must have swift installed
+cd into the Swift directory and run the tests
+
+Example:
+```console
+cd type_tests/Swift
+swift test
+```
+
+
 #### Java
 Note: You must have the JDK and Maven installed.
+cd into the Java directory for a specific bug type and run the tests using Maven - for example
 ```console
+cd logic_tests/Java
 mvn test
 ```
 
@@ -44,9 +67,17 @@ For off-by-one errors:
 python -m unittest discover test
 ```
 
-For API misuse and memory leak errors:
+For API misuse, memory leak errors, logic tests, and type tests, cd into the Python directory and run PyTest - for example:
 ```console
+cd type_tests/Python
 pytest
+```
+
+#### PHP
+Note: You must have PHPUnit installed. cd into the PHP directory and run the tests using PHPUnit - for example:
+```console
+cd type_tests/PHP
+phpunit tests/IncludeValidatorTest.php
 ```
 
 #### Rust
@@ -54,7 +85,7 @@ pytest
 cargo test
 ```
 
-#### TypeScript
+#### TypeScript / JavaScript
 Note: You must have Node.js installed and should run `npm install` to get all required dependencies.
 ```console
 npm test
