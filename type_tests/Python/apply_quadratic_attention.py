@@ -11,4 +11,4 @@ def apply_quadratic_attention(query: torch.Tensor, key: torch.Tensor, value: tor
     value_float = value.float()
     hidden_states = torch.matmul(scores, value_float)
     
-    return hidden_states.to(dtype=torch.bfloat16)
+    return hidden_states
