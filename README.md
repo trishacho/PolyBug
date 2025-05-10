@@ -37,6 +37,7 @@ cd into the C# Test directory and run the tests using dotnet
 Example:
 ```console
 cd logic_tests/C#
+dotnet build
 dotnet test
 ```
 
