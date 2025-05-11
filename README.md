@@ -2,7 +2,7 @@
 
 We propose **PolyBug**, a new benchmark for evaluating Large Language Models (LLMs) on real-world debugging tasks across multiple programming languages.
 
-We have curated 7–10 real bugs from open-source projects across a variety of bug categories—from off-by-one errors to null references—in languages such as **Python, Java, TypeScript, C/C++,** and more.
+We have curated 7–10 real bugs from open-source projects across a variety of bug categories—from off-by-one errors to null references—in languages such as **Python, Java, TypeScript, C/C++,** and more, for a total of 79 bugs and 3,111 lines of code.
 
 These bugs were collected using the GitHub API from ~70 repositories and each comes with:
 - A **buggy code snippet**
@@ -23,7 +23,7 @@ gcc <name_of_file>.c -o <name_of_file>
 ./<name_of_file>
 ```
 
-Example:
+#### Example Usage:
 ```console
 gcc vterm_state_set_palette_color.c -o vterm_state_set_palette_color
 
@@ -72,7 +72,7 @@ Note: You must have PHPUnit installed.
 phpunit tests/<TestFile>.php
 ```
 
-Example:
+#### Example Usage:
 ```console
 phpunit tests/IncludeValidatorTest.php
 ```
@@ -136,11 +136,12 @@ Build the Docker image:
 ```console
 docker build -f <docker_file_name> -t <test_name> .
 ```
-Replace the buggy file with your fixed version:
+Finally, replace the buggy file with your fixed version:
 ```console
 docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo> <test_name>
 ```
-#### Example usage
+
+#### Example Usage:
 For Dockerfile1:
 ```console
 docker build -f Dockerfile1 -t beats-test .
@@ -162,5 +163,3 @@ To run the scraper that obtains closed GitHub issues with fix commits to both co
 ```console
 python scraper_with_tests.py <bug_type> <number_of_issues>
 ```
-
-
