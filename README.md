@@ -12,9 +12,9 @@ These bugs were collected using the GitHub API from ~70 repositories and each co
 If the repository a bug comes from has developer-written tests, we have also included a **Dockerfile** that can be used to create a container that clones the repository, installs the appropriate dependencies, and runs the relevant test(s).
 
 ## Running Our Unit Tests
-To run our manually written unit tests, you may follow the steps below for each type of bug.
+To run our manually written unit tests, you may follow the steps below for each type of bug after navigating to the appropriate directory using `cd` (for example, if you want to run Java tests for logic errors, run `cd logic/Java`).
 
-### Off-By-One, API Misuse, and Memory Leak Errors
+### Off-By-One, API Misuse, Memory Leak, Type, and Logic Errors
 #### C/C++
 Note: You must have `gcc` installed.
 ```console 
@@ -31,32 +31,24 @@ gcc vterm_state_set_palette_color.c -o vterm_state_set_palette_color
 ```
 
 #### C#
-Note: You must have dotnet installed
-cd into the C# Test directory and run the tests using dotnet
+Note: You must have `dotnet` installed.
 
-Example:
 ```console
-cd logic_tests/C#
 dotnet build
 dotnet test
 ```
 
 #### Swift
-Note: You must have swift installed
-cd into the Swift directory and run the tests
+Note: You must have `swift` installed.
 
-Example:
 ```console
-cd type_tests/Swift
 swift test
 ```
 
-
 #### Java
 Note: You must have the JDK and Maven installed.
-cd into the Java directory for a specific bug type and run the tests using Maven - for example
+
 ```console
-cd logic_tests/Java
 mvn test
 ```
 
@@ -68,26 +60,33 @@ For off-by-one errors:
 python -m unittest discover test
 ```
 
-For API misuse, memory leak errors, logic tests, and type tests, cd into the Python directory and run PyTest - for example:
+For API misuse, memory leak errors, logic tests, and type tests:
 ```console
-cd type_tests/Python
 pytest
 ```
 
 #### PHP
-Note: You must have PHPUnit installed. cd into the PHP directory and run the tests using PHPUnit - for example:
+Note: You must have PHPUnit installed.
+
 ```console
-cd type_tests/PHP
+phpunit tests/<TestFile>.php
+```
+
+Example:
+```console
 phpunit tests/IncludeValidatorTest.php
 ```
 
 #### Rust
+Note: You must have `cargo` installed.
+
 ```console
 cargo test
 ```
 
-#### TypeScript / JavaScript
+#### TypeScript and JavaScript
 Note: You must have Node.js installed and should run `npm install` to get all required dependencies.
+
 ```console
 npm test
 ```
