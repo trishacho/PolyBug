@@ -127,6 +127,30 @@ Follow the same steps as off-by-one and memory leak errors to build the image, s
 ```console
 scripts/twister -T tests/drivers -p qemu_x86 --inline-logs —verbose
 ```
+### Race Condition Errors
+Navigate to the directory containing your Dockerfile:
+```console
+cd <path_to_folder_containing_docker_file>
+```
+Build the Docker image:
+```console
+docker build -f <docker_file_name> -t <test_name> .
+```
+Replace the buggy file with your fixed version:
+```console
+docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo> <test_name>
+```
+#### Example usage
+For Dockerfile1:
+```console
+docker build -f Dockerfile1 -t beats-test .
+docker run --rm -v $(pwd)/runloop.go:/app/beats/libbeat/publisher/queue/memqueue/runloop.go beats-test
+```
+For Dockerfile2:
+```console
+docker build -f Dockerfile2 -t utp-go-test .
+docker run --rm -v $(pwd)/utp_utils.go:/app/utp-go/utp_utils.go utp-go-test
+```
 
 ## Running the Scrapers
 To run the basic scraper that obtains closed GitHub issues with fix commits in a certain category:
@@ -138,3 +162,5 @@ To run the scraper that obtains closed GitHub issues with fix commits to both co
 ```console
 python scraper_with_tests.py <bug_type> <number_of_issues>
 ```
+
+
