@@ -1,0 +1,12 @@
+FROM golang:latest
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y git && \
+    git clone https://github.com/zen-eth/utp-go.git && \
+    cd utp-go && \
+    git checkout 41ad062a8345ebb94cbf16400b365269265c0c62
+
+WORKDIR /app/utp-go
+
+CMD ["go", "test", "-race", "-v", "-run", "TestRandomUint16DataRace"]

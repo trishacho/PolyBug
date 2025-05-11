@@ -1,0 +1,13 @@
+FROM golang:1.24.1
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y git && \
+    git clone https://github.com/elastic/beats.git && \
+    cd beats && \
+    # Checkout a specific stable version (OPTIONAL: adjust as needed)
+    git checkout 9d2c35f2561c1bb44d38d44750d9d26464008666
+
+WORKDIR /app/beats
+
+CMD ["go", "test", "-v", "-run", "^TestClosedEmptyQueueDoesNotBlockGet$", "./libbeat/publisher/queue/memqueue"]
