@@ -1,0 +1,63 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    curl git unzip wget build-essential cmake pkg-config libssl-dev xz-utils \
+    nodejs npm php-cli php-xml php-mbstring composer \
+    julia rustup dart \
+ && rm -rf /var/lib/apt/lists/*
+
+
+RUN rustup default stable
+
+WORKDIR /workspace
+
+RUN git clone https://github.com/trishacho/PolyBug.git
+
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors
+
+# Run tests by language
+
+
+# 1. TypeScript
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/TypeScript
+RUN npm ci && npm test
+
+# 2. C++
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/C++
+RUN mkdir -p build && cd build && cmake .. && make && ctest --output-on-failure
+
+# 3. PHP
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/PHP
+RUN composer install && vendor/bin/phpunit
+
+# 4. TypeScript
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/TypeScript2
+RUN npm ci && npm test
+
+# 5. Julia
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/Julia
+RUN julia --project=. -e "using Pkg; Pkg.instantiate(); Pkg.test()"
+
+# 6. PHP
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/PHP2
+RUN composer install && vendor/bin/phpunit
+
+# 7. PHP
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/PHP3
+RUN composer install && vendor/bin/phpunit
+
+# 8. Rust
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/Rust
+RUN cargo test -- --nocapture
+
+# 9. Dart
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/Dart
+RUN dart pub get && dart test
+
+# 10. JavaScript
+WORKDIR /workspace/PolyBug/Faulty\ index\ errors/Javascript
+RUN npm ci && npm test
+
+CMD ["bash"]
