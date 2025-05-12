@@ -11,7 +11,7 @@ These bugs were collected using the GitHub API from ~70 repositories and each co
 
 If the repository a bug comes from has developer-written tests, we have also included a **Dockerfile** that can be used to create a container that clones the repository, installs the appropriate dependencies, and runs the relevant test(s).
 
-We also tested a variety of LLMs,including both fine-tuned and general-purpose models, on all bugs and associated tests to evaluate their performance in fault localization and program repair across different bug categories. Please refer to `buggy_files.md` if you would like to know exactly what buggy files/code snippets we used as input to each LLM.
+We also tested a variety of LLMs, including both fine-tuned and general-purpose models, on all bugs and associated tests to evaluate their performance in fault localization and program repair across different bug categories and languages. Please refer to `buggy_files.md` if you would like to know exactly what buggy files/code snippets we used as input to each LLM.
 
 ## Running Our Unit Tests
 To run our manually written unit tests, you may follow the steps below for each type of bug after navigating to the appropriate directory using `cd` (for example, if you want to run Java tests for logic errors, run `cd logic/Java`).
