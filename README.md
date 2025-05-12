@@ -172,7 +172,7 @@ Finally, replace the buggy file with your fixed version, run with an interactive
 docker run -it --name <container> <image>
 ```
 ## Note about Certain Bugs
-Some Developer Tests, specifically, logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, type/Python/test_10_dev.py, were not able to be run in an image for some reason (**These bug types however have associated images where developer tests can be run**). 
+Some Developer Tests, specifically, logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, type/Python/test_10_dev.py, were not able to be run in an image for some reason (**These bug types however have other tests with associated images where developer tests can be run**). 
 
 The reasons were, in one case, an abnormally long run time to create or run the Docker Image, or in two cases, the tests were buried so deep in the commit history that they did not quite work with the current version of the function. In these 3 cases only, we ran the developer test locally rather than in the Docker image. Thus, there is no Dockerfile for these three developer tests.
 
