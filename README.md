@@ -2,7 +2,7 @@
 
 We propose **PolyBug**, a new benchmark for evaluating Large Language Models (LLMs) on real-world debugging tasks across multiple programming languages.
 
-We have curated 7–10 real bugs from open-source projects across a variety of bug categories—from off-by-one errors to null references—in languages such as **Python, Java, TypeScript, C/C++,** and more, for a total of 79 bugs and 3,111 lines of code.
+We have curated 5–10 real bugs from open-source projects across a variety of bug categories—from off-by-one errors to null references—in languages such as **Python, Java, TypeScript, C/C++,** and more, for a total of 78 bugs and 3,097 lines of code.
 
 These bugs were collected using the GitHub API from ~70 repositories and each comes with:
 - A **buggy code snippet**
