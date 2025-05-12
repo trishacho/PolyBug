@@ -142,6 +142,7 @@ docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo>
 ```
 
 ### Deadlocks
+#### Note: These tests take a long time (30-60 minutes) to build
 Navigate to the directory containint the Dockerfile
 ```console
 cd <path_to_folder_containing_docker_file>
