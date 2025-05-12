@@ -141,32 +141,34 @@ Finally, replace the buggy file with your fixed version:
 docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo> <test_name>
 ```
 
-### Deadlocks
-#### Note: These tests take a long time (30-60 minutes) to build
-Navigate to the directory containint the Dockerfile
-```console
-cd <path_to_folder_containing_docker_file>
-```
-Build the Docker image:
-```console
-docker build -t <image_name> .
-```
-Finally, replace the buggy file with your fixed version and run with an interactive shell, and trigger the bug as described in the issue:
-```console
-docker run -it --name <container> <image>
-```
-
-
 #### Example Usage:
 For Dockerfile1:
 ```console
 docker build -f Dockerfile1 -t beats-test .
 docker run --rm -v $(pwd)/runloop.go:/app/beats/libbeat/publisher/queue/memqueue/runloop.go beats-test
 ```
+
 For Dockerfile2:
 ```console
 docker build -f Dockerfile2 -t utp-go-test .
 docker run --rm -v $(pwd)/utp_utils.go:/app/utp-go/utp_utils.go utp-go-test
+```
+
+### Deadlocks
+#### Note: These tests take a long time (30-60 minutes) to build!
+Navigate to the directory containing the Dockerfile:
+```console
+cd <path_to_folder_containing_docker_file>
+```
+
+Build the Docker image:
+```console
+docker build -t <image_name> .
+```
+
+Finally, replace the buggy file with your fixed version, run with an interactive shell, and trigger the bug as described in the issue:
+```console
+docker run -it --name <container> <image>
 ```
 
 ## Running the Scrapers
