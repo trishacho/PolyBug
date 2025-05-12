@@ -113,14 +113,14 @@ utp-go/utp_utils.go
 
 ## Buggy Files for Condition Errors
 
-Below is the list of files to use as your LLM input for each “Condition errors” test. For each entry, use the **entire** source file under the `Condition errors/` directory.
+## Below is the list of files to use as your LLM input for each “Condition errors” test. For each entry, use the **entire** source file under the `Condition errors/` directory.
 ---
 ### TypeScript
 
 - **assignRecipeToDate mutation**  
   `Condition errors/TypeScript/assignRecipeToDate.ts`
 
-## #C++
+### C++
 - **Main CLI program**  
   `Condition errors/C++/main.cpp`
 
