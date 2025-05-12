@@ -165,3 +165,49 @@ utp-go/utp_utils.go
 - **initSiteConfig setup**  
   `Condition errors/Javascript/initSiteConfig.js`
 
+
+## Buggy Files for Faulty Index Errors
+
+##Below is the list of files to use as LLM input for each “Faulty index errors” test. For each, use the **entire source file** located in the `Faulty index errors/` directory of the repository.
+
+---
+### TypeScript
+- **deleteStudent index check fix**  
+  `Faulty index errors/TypeScript/deleteStudent.ts`
+
+### C++
+- **main function index condition**  
+  `Faulty index errors/C++/main.cpp`
+
+### PHP (Strong-Password Generator)
+- **password length and conditions logic**  
+  `Faulty index errors/PHP/strong-password-generator.php`
+
+### TypeScript (assignRecipeToDate)
+- **assignRecipeToDate mutation handler**  
+  `Faulty index errors/TypeScript2/assignRecipeToDate.ts`
+
+### Julia
+- **run_sim_all simulation driver with sweep logic**  
+  `Faulty index errors/Julia/run_sim_all.jl`
+
+### PHP (License-Bundle)
+- **onKernelResponse with licence key check**  
+  `Faulty index errors/PHP2/onKernelResponse.php`
+
+### PHP (ES-Indexing-Magento)
+- **category display mode handling**  
+  `Faulty index errors/PHP3/IncludeValidator.php`
+
+### Rust
+- **passive_sync_one_subscribe_source logic**  
+  `Faulty index errors/Rust/lib.rs`
+
+### Dart
+- **movies list state handling**  
+  `Faulty index errors/Dart/movies_list_assessment.dart`
+  
+### JavaScript
+- **initSiteConfig merging and error handling**  
+  `Faulty index errors/Javascript/initSiteConfig.js`
+
