@@ -155,7 +155,7 @@ docker run --rm -v $(pwd)/utp_utils.go:/app/utp-go/utp_utils.go utp-go-test
 ```
 
 ### Deadlocks
-#### Note: These tests were not originally run with Docker - rather they were run locally. We have attempted to Dockerize the testing process but the Dockerfiles may not be perfect
+#### Note: These tests were not originally run with Docker—rather, they were run locally. We have attempted to Dockerize the testing process, but the Dockerfiles may not be perfect.
 #### Note: These tests take a long time (30-60 minutes) to build!
 Navigate to the directory containing the Dockerfile:
 ```console
