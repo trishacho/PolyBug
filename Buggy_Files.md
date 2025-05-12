@@ -2,7 +2,7 @@
 
 Here, you will find what to use as the LLM input for each test.
 
-## Type Bugs
+## Type Errors
 
 ### C++
 type_tests/C++/reg.h (entire file)
@@ -23,7 +23,7 @@ There are 7 test files (test_X.py) and 7 source code files. Each source code fil
 ### Swift
 The source file is Swift/Sources/tool_test/Tool.swift— use the entire file as input to the LLM.
 
-## Logic Bugs
+## Logic Errors
 ### C/
 logic_tests/C/bt_rpa_functions.c (entire file)
 
@@ -48,3 +48,57 @@ There are 4 tests, each with 1 corresponding source code file. Each source code 
 
 ### Python
 /logic_tests/Python/isclose.py (entire file)
+
+## API Misuse Errors
+### C++
+phy_configure_link.cpp: include/zephyr/net/phy.h (lines 198-219)
+
+phy_get_link_state.cpp: include/zephyr/net/phy.h (lines 221-243)
+
+### Java
+FileReader.java: src/main/java/net/coobird/thumbnailator/Thumbnails.java (lines 2668-2685)
+
+BuggyDialog.java: src/main/java/dialogs/SetAnimationStyle.java (lines 87-90)
+
+### Python
+message_handler.py: bot/handlers.py (import statements and lines 45-62)
+
+read_file.py: utils/read_file.py (lines 33-36)
+
+### Rust
+src/models.rs (lines 441-462)
+
+## Off-by-one Errors
+### C
+src/libvterm/src/pen.c (lines 275-282)
+
+### Java
+org.eclipse.jdt.debug.ui/ui/org/eclipse/jdt/internal/debug/ui/console/JavaStackTraceHyperlink.java (lines 246-299)
+
+### Python
+evaluate_stop_loop.py: src/backend/base/langflow/components/logic/loop.py (lines 53-57)
+
+pad_to_polygon.py: vercye_ops/lai/3_analysis_LAI.py (import statements and lines 17-39)
+
+### Rust
+src/diagnostic.rs (lines 41-60)
+
+### TypeScript
+components/recipe-gallery/gallery-pagination.client.tsx (lines 79-90)
+
+## Memory Leak Errors
+### C
+service/profiles/audio_interface/audio_control.c (lines 248-264)
+
+### Java
+FileReader.java: src/main/java/net/coobird/thumbnailator/Thumbnails.java (lines 2668-2685)
+
+ListClear.java: src/main/java/utils/ListClear.java (lines 3824-3827)
+
+### Python
+message_handler.py: bot/handlers.py (import statements and lines 45-62)
+
+read_file.py: utils/read_file.py (lines 33-36)
+
+### TypeScript
+packages/serialization/json/src/jsonParseNode.ts (lines 48-66)
