@@ -1,6 +1,6 @@
 # Buggy Files
 
-Here, you will find what to use as the LLM input for each test.
+Here, you will find what to use as the LLM input for each test. You can also refer to our [Collected Bugs](https://docs.google.com/spreadsheets/d/1NFlDCCZ07WrNCaY2s5dHaMxYz9uJYhFlrrQHPb3YiNw/edit?gid=0#gid=0) spreadsheet for each code snippet we used and the corresponding GitHub repositories we sourced them from.
 
 ## Type Errors
 
@@ -103,6 +103,14 @@ read_file.py: utils/read_file.py (lines 33-36)
 ### TypeScript
 packages/serialization/json/src/jsonParseNode.ts (lines 48-66)
 
+## Race Condition Errors
+### Go
+Note: Each file is located in the `race_condition/` directory.
+
+runloop.go (entire file)
+
+utp_utils.go (entire file)
+
 ## Null Reference Errors
 ### Dockerfile1
 beats/libbeat/publisher/queue/memqueue/runloop.go
@@ -110,104 +118,62 @@ beats/libbeat/publisher/queue/memqueue/runloop.go
 ### Dockerfile2
 utp-go/utp_utils.go
 
+## Condition Errors
+Note: For each test, use the **entire** source file under the `condition/` directory.
 
-## Buggy Files for Condition Errors
-
-## Below is the list of files to use as your LLM input for each “Condition errors” test. For each entry, use the **entire** source file under the `Condition errors/` directory.
----
 ### TypeScript
+assignRecipeToDate: condition/TypeScript/assignRecipeToDate.ts
 
-- **assignRecipeToDate mutation**  
-  `Condition errors/TypeScript/assignRecipeToDate.ts`
+deleteStudent: condition/TypeScript2/deleteStudent.ts
 
 ### C++
-- **Main CLI program**  
-  `Condition errors/C++/main.cpp`
+condition/C++/main.cpp
 
-### PHP (Strong-Password Generator)
+### PHP 
+Strong-password generator: condition/PHP/strong-password-generator.php
 
-- **Password generator logic**  
-  `Condition errors/PHP/strong-password-generator.php`
+License-bundle: condition/PHP2/onKernelResponse.php
 
-### TypeScript (deleteStudent)
-
-- **deleteStudent utility**  
-  `Condition errors/TypeScript2/deleteStudent.ts`
-
+ES-Indexing-Magento: condition/PHP3/IncludeValidator.php
 
 ### Julia
-
-- **run_sim_all simulation driver**  
-  `Condition errors/Julia/run_sim_all.jl`
-
-### PHP (License-Bundle)
-
-- **onKernelResponse listener**  
-  `Condition errors/PHP2/onKernelResponse.php`
-
-### PHP (ES-Indexing-Magento)
-
-- **IncludeValidator class**  
-  `Condition errors/PHP3/IncludeValidator.php`
+condition/Julia/run_sim_all.jl
 
 ### Rust
-
-- **passive_sync_one_subscribe_source**  
-  `Condition errors/Rust/lib.rs`
+condition/Rust/lib.rs
 
 ### Dart
-
-- **Empty‐history widget**  
-  `Condition errors/Dart/movies_list_assessment.dart`
+condition/Dart/movies_list_assessment.dart
 
 ### JavaScript
+condition/Javascript/initSiteConfig.js
 
-- **initSiteConfig setup**  
-  `Condition errors/Javascript/initSiteConfig.js`
+## Faulty Index Errors
+Note: For each test, use the **entire** source file under the `faulty_index/` directory.
 
-
-## Buggy Files for Faulty Index Errors
-
-##Below is the list of files to use as LLM input for each “Faulty index errors” test. For each, use the **entire source file** located in the `Faulty index errors/` directory of the repository.
-
----
 ### TypeScript
-- **deleteStudent index check fix**  
-  `Faulty index errors/TypeScript/deleteStudent.ts`
+deleteStudent: faulty_index/TypeScript/deleteStudent.ts
 
-### C++
-- **main function index condition**  
-  `Faulty index errors/C++/main.cpp`
+assignRecipeToDate: faulty_index/TypeScript2/assignRecipeToDate.ts
 
 ### PHP (Strong-Password Generator)
-- **password length and conditions logic**  
-  `Faulty index errors/PHP/strong-password-generator.php`
+Strong-password generator: faulty_index/PHP/strong-password-generator.php
 
-### TypeScript (assignRecipeToDate)
-- **assignRecipeToDate mutation handler**  
-  `Faulty index errors/TypeScript2/assignRecipeToDate.ts`
+License-bundle: faulty_index/PHP2/onKernelResponse.php
+
+ES-Indexing-Magento: faulty_index/PHP3/IncludeValidator.php
+
+### C++
+faulty_index/C++/main.cpp
 
 ### Julia
-- **run_sim_all simulation driver with sweep logic**  
-  `Faulty index errors/Julia/run_sim_all.jl`
-
-### PHP (License-Bundle)
-- **onKernelResponse with licence key check**  
-  `Faulty index errors/PHP2/onKernelResponse.php`
-
-### PHP (ES-Indexing-Magento)
-- **category display mode handling**  
-  `Faulty index errors/PHP3/IncludeValidator.php`
+faulty_index/Julia/run_sim_all.jl
 
 ### Rust
-- **passive_sync_one_subscribe_source logic**  
-  `Faulty index errors/Rust/lib.rs`
+faulty_index/Rust/lib.rs
 
 ### Dart
-- **movies list state handling**  
-  `Faulty index errors/Dart/movies_list_assessment.dart`
+faulty_index/Dart/movies_list_assessment.dart
   
 ### JavaScript
-- **initSiteConfig merging and error handling**  
-  `Faulty index errors/Javascript/initSiteConfig.js`
-
+faulty_index/Javascript/initSiteConfig.js

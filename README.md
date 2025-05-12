@@ -176,6 +176,22 @@ Finally, replace the buggy file with your fixed version, run with an interactive
 docker run -it --name <container> <image>
 ```
 
+### Condition Errors
+To run the condition errors test suite, use the following commands:
+```console
+docker build -f Dockerfile -t polybug-condition-errors .
+
+docker run --rm -it polybug-condition-errors
+```
+
+### Faulty Index Errors
+To run the faulty index errors test suite, use the following commands:
+```console
+docker build -f Dockerfile_faulty -t polybug-faulty-index-errors .
+
+docker run --rm -it polybug-faulty-index-errors
+```
+
 ## Note About Certain Bugs
 Some developer tests, specifically logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, and type/Python/test_10_dev.py, were not able to be run in an image for some reason (**however, these bug types have other tests with associated images where developer tests can be run**). 
 
@@ -190,29 +206,4 @@ python scraper.py <bug_type> <number_of_issues>
 To run the scraper that obtains closed GitHub issues with fix commits to both code and test files in a certain category:
 ```console
 python scraper_with_tests.py <bug_type> <number_of_issues>
-```
-
-
-### Condition Errors Test Suite
-
-Place this alongside your `Dockerfile`.
-
-## Build Image
-
-```bash
-docker build -f Dockerfile -t polybug-condition-errors .
-
-docker run --rm -it polybug-condition-errors
-```
-
-### Faulty Index Errors Test Suite
-
-Place this alongside your `Dockerfile_faulty`.
-
-## Build Image
-
-```bash
-docker build -f Dockerfile_faulty -t polybug-faulty-index-errors .
-
-docker run --rm -it polybug-faulty-index-errors
 ```
