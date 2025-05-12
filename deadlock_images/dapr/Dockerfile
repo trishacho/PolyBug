@@ -1,12 +1,12 @@
 # Development image with full source access
 FROM golang:1.24-alpine AS dev
 
+# Install git (Alpine uses apk, not apt-get)
+RUN apk add --no-cache git bash
+
 # Clone Dapr repo (replace with your fork if needed)
 WORKDIR /app
-RUN apt-get update && apt-get install -y git && \
-    git clone hhttps://github.com/dapr/dapr.git && \
-    cd dapr
-
+RUN git clone https://github.com/dapr/dapr.git
 WORKDIR /app/dapr
 
 # Keep container running for development
