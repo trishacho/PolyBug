@@ -171,6 +171,8 @@ Finally, replace the buggy file with your fixed version, run with an interactive
 ```console
 docker run -it --name <container> <image>
 ```
+## Note about Certain Bugs
+Some Developer Tests, specifically, logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, type/Python/test_10_dev.py, were not able to be run in an image for some reason (These bug types however have associated images where developer tests can be run). The reasons vary, but typically include an abnormally long run time to create or run the Docker Image. In these 3 cases only, we adapted the developer test locally rather than using the Docker image. In theory, this is the same thing, but rather than putting the patched version into the original test, we just move the test to the PolyBug repo. These are the only 3 examples of this.
 
 ## Running the Scrapers
 To run the basic scraper that obtains closed GitHub issues with fix commits in a certain category:
