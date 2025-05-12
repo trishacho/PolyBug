@@ -19,17 +19,3 @@ WORKDIR /app
 
 
 CMD ["go", "test", "-race", "-v", "-run", "TestRandomUint16DataRace"]
-
-'''
-TO RUN (IN TERMInAL)
-# Build the image
-docker build -t dapr-dev .
-
-# Run with interactive shell
-docker run -it --name dapr-dev-container dapr-dev
-
-# Inside the container:
-cd /app
-make build  # Build Dapr
-./dist/linux_amd64/release/daprd --app-id myapp  # Run
-'''
