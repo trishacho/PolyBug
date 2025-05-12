@@ -68,7 +68,7 @@ read_file.py: utils/read_file.py (lines 33-36)
 ### Rust
 src/models.rs (lines 441-462)
 
-## Off-by-one Errors
+## Off-By-One Errors
 ### C
 src/libvterm/src/pen.c (lines 275-282)
 
