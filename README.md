@@ -92,12 +92,15 @@ Note: You must have Node.js installed and should run `npm install` to get all re
 ```console
 npm test
 ```
-### How to run Null Reference Json Test File
+
+### Null Reference Errors
+You can run the JSON test file using the following commands:
 ```console
 cd <path_to_run_json_dataset.py_file>
-python -c "from run_json_dataset import run_test_from_json; run_test_from_json('<path_to_json_dataset.py>', <fixed_function_code>)"
 
+python -c "from run_json_dataset import run_test_from_json; run_test_from_json('<path_to_json_dataset.py>', <fixed_function_code>)"
 ```
+
 ## Using a Dockerfile
 To use a Dockerfile to run developer-written tests, you may follow the steps below for each type of bug.
 

@@ -104,19 +104,16 @@ read_file.py: utils/read_file.py (lines 33-36)
 packages/serialization/json/src/jsonParseNode.ts (lines 48-66)
 
 ## Race Condition Errors
-### Go
-Note: Each file is located in the `race_condition/` directory.
+Note: Each file is also located in the `race_condition/` directory.
 
-runloop.go (entire file)
-
-utp_utils.go (entire file)
-
-## Null Reference Errors
 ### Dockerfile1
 beats/libbeat/publisher/queue/memqueue/runloop.go
 
 ### Dockerfile2
 utp-go/utp_utils.go
+
+## Null Reference Errors
+Each buggy code snippet can be found in the JSON file located in the `null_reference/` directory.
 
 ## Condition Errors
 Note: For each test, use the **entire** source file under the `condition/` directory.
