@@ -102,3 +102,10 @@ read_file.py: utils/read_file.py (lines 33-36)
 
 ### TypeScript
 packages/serialization/json/src/jsonParseNode.ts (lines 48-66)
+
+## Null Reference Errors
+### Dockerfile1
+beats/libbeat/publisher/queue/memqueue/runloop.go
+
+### Dockerfile2
+utp-go/utp_utils.go
