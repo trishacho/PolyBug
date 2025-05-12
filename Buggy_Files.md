@@ -109,3 +109,59 @@ beats/libbeat/publisher/queue/memqueue/runloop.go
 
 ### Dockerfile2
 utp-go/utp_utils.go
+
+
+# Buggy Files for Condition Errors
+
+Below is the list of files to use as your LLM input for each “Condition errors” test. For each entry, use the **entire** source file under the `Condition errors/` directory.
+---
+## TypeScript
+
+- **assignRecipeToDate mutation**  
+  `Condition errors/TypeScript/assignRecipeToDate.ts`
+
+## C++
+- **Main CLI program**  
+  `Condition errors/C++/main.cpp`
+
+## PHP (Strong-Password Generator)
+
+- **Password generator logic**  
+  `Condition errors/PHP/strong-password-generator.php`
+
+## TypeScript (deleteStudent)
+
+- **deleteStudent utility**  
+  `Condition errors/TypeScript2/deleteStudent.ts`
+
+
+## Julia
+
+- **run_sim_all simulation driver**  
+  `Condition errors/Julia/run_sim_all.jl`
+
+## PHP (License-Bundle)
+
+- **onKernelResponse listener**  
+  `Condition errors/PHP2/onKernelResponse.php`
+
+## PHP (ES-Indexing-Magento)
+
+- **IncludeValidator class**  
+  `Condition errors/PHP3/IncludeValidator.php`
+
+## Rust
+
+- **passive_sync_one_subscribe_source**  
+  `Condition errors/Rust/lib.rs`
+
+## Dart
+
+- **Empty‐history widget**  
+  `Condition errors/Dart/movies_list_assessment.dart`
+
+## JavaScript
+
+- **initSiteConfig setup**  
+  `Condition errors/Javascript/initSiteConfig.js`
+
