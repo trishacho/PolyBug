@@ -141,6 +141,21 @@ Finally, replace the buggy file with your fixed version:
 docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo> <test_name>
 ```
 
+### Deadlocks
+Navigate to the directory containint the Dockerfile
+```console
+cd <path_to_folder_containing_docker_file>
+```
+Build the Docker image:
+```console
+docker build -t <image_name> .
+```
+Finally, replace the buggy file with your fixed version and run with an interactive shell, and trigger the bug as described in the issue:
+```console
+docker run -it --name <container> <image>
+```
+
+
 #### Example Usage:
 For Dockerfile1:
 ```console
