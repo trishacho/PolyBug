@@ -11,11 +11,3 @@ WORKDIR /app/dapr
 
 # Keep container running for development
 CMD ["bash", "-c", "tail -f /dev/null"]
-
-FROM golang:latest
-
-WORKDIR /app
-
-
-
-CMD ["go", "test", "-race", "-v", "-run", "TestRandomUint16DataRace"]
