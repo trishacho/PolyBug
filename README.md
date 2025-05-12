@@ -191,3 +191,28 @@ To run the scraper that obtains closed GitHub issues with fix commits to both co
 ```console
 python scraper_with_tests.py <bug_type> <number_of_issues>
 ```
+
+
+### Condition Errors Test Suite
+
+Place this alongside your `Dockerfile`.
+
+## Build Image
+
+```bash
+docker build -f Dockerfile -t polybug-condition-errors .
+
+docker run --rm -it polybug-condition-errors
+```
+
+### Faulty Index Errors Test Suite
+
+Place this alongside your `Dockerfile_faulty`.
+
+## Build Image
+
+```bash
+docker build -f Dockerfile_faulty -t polybug-faulty-index-errors .
+
+docker run --rm -it polybug-faulty-index-errors
+```
