@@ -127,15 +127,18 @@ Follow the same steps as off-by-one and memory leak errors to build the image, s
 ```console
 scripts/twister -T tests/drivers -p qemu_x86 --inline-logs —verbose
 ```
+
 ### Race Condition Errors
 Navigate to the directory containing your Dockerfile:
 ```console
 cd <path_to_folder_containing_docker_file>
 ```
+
 Build the Docker image:
 ```console
 docker build -f <docker_file_name> -t <test_name> .
 ```
+
 Finally, replace the buggy file with your fixed version:
 ```console
 docker run --rm -v $(pwd)/<path_to_fixed_file>:/<path_to_buggy_file_in_git_repo> <test_name>
@@ -156,7 +159,8 @@ docker run --rm -v $(pwd)/utp_utils.go:/app/utp-go/utp_utils.go utp-go-test
 
 ### Deadlocks
 #### Note: These tests were not originally run with Docker—rather, they were run locally. We have attempted to Dockerize the testing process, but the Dockerfiles may not be perfect.
-#### Note: These tests take a long time (30-60 minutes) to build! Unlike other tests, we must build the ENTIRE Proejct
+#### Note: These tests take a long time (30-60 minutes) to build! Unlike other tests, we must build the ENTIRE project.
+
 Navigate to the directory containing the Dockerfile:
 ```console
 cd <path_to_folder_containing_docker_file>
@@ -171,10 +175,11 @@ Finally, replace the buggy file with your fixed version, run with an interactive
 ```console
 docker run -it --name <container> <image>
 ```
-## Note about Certain Bugs
-Some Developer Tests, specifically, logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, type/Python/test_10_dev.py, were not able to be run in an image for some reason (**These bug types however have other tests with associated images where developer tests can be run**). 
 
-The reasons were, in one case, an abnormally long run time to create or run the Docker Image, or in two cases, the tests were buried so deep in the commit history that they did not quite work with the current version of the function. In these 3 cases only, we ran the developer test locally rather than in the Docker image. Thus, there is no Dockerfile for these three developer tests.
+## Note About Certain Bugs
+Some developer tests, specifically logic/Java/src/test/java/DateTimeConversionTest, type/Python/test_4_dev.py, and type/Python/test_10_dev.py, were not able to be run in an image for some reason (**however, these bug types have other tests with associated images where developer tests can be run**). 
+
+The reasons were, in one case, an abnormally long run time to create or run the Docker image; in the other two cases, the tests were buried so deep in the commit history that they did not quite work with the current version of the function. In these three cases only, we ran the developer test locally rather than in the Docker image. Thus, there is no Dockerfile for these three developer tests.
 
 ## Running the Scrapers
 To run the basic scraper that obtains closed GitHub issues with fix commits in a certain category:
